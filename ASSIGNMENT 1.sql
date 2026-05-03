@@ -1,0 +1,90 @@
+--Question #1
+
+SELECT FIRST_NAME,LAST_NAME,CITY,PHONE 
+ FROM SALES.CUSTOMERS 
+WHERE 
+STATE='CA'
+AND PHONE IS NOT NULL;
+
+--QUESTION #2 
+
+
+SELECT product_id,product_name,model_year,
+list_price
+FROM PRODUCTION.products
+ORDER BY MODEL_YEAR DESC, list_price ASC;
+
+
+--QUESTION #3(a)
+
+SELECT TOP 5
+product_name,list_price
+FROM PRODUCTION.products
+ORDER BY list_price DESC
+
+--QUESTION #3(B)
+
+SELECT TOP 5 PERCENT *
+FROM PRODUCTION.products
+ORDER BY LIST_PRICE ASC;
+
+--17 ROWS
+
+--QUESTION #4(A)
+
+SELECT PRODUCT_ID,PRODUCT_NAME,list_price 
+FROM production.products
+ORDER BY list_price DESC
+OFFSET 0 ROWS 
+FETCH NEXT 10 ROWS ONLY;
+
+
+--QUESTION #4(B)
+
+SELECT PRODUCT_ID,PRODUCT_NAME,list_price
+FROM production.products
+ORDER BY list_price DESC
+OFFSET 10 ROWS
+FETCH NEXT 10 ROWS ONLY;
+
+---QUESTION #4 (C)
+
+SELECT PRODUCT_ID,PRODUCT_NAME,list_price
+FROM production.products 
+ORDER BY list_price DESC
+OFFSET 20 ROWS
+FETCH NEXT 10 ROWS ONLY;
+
+
+--QUESTION #5 (a) 
+
+SELECT DISTINCT(STATE) AS UNIQUE_STATE
+FROM SALES.customers
+ORDER BY UNIQUE_STATE
+
+--QUESTION #5 (B) 
+
+SELECT DISTINCT STATE, CITY
+FROM SALES.customers
+ORDER BY STATE, CITY
+
+--QUESTION #5 (C) 
+
+SELECT COUNT(DISTINCT (MODEL_YEAR))AS MODEL_YEAR FROM 
+production.products 
+
+
+
+--QUESTION # 6
+SELECT PRODUCT_ID,product_name,brand_id,
+category_id,list_price,model_year
+FROM production.products
+WHERE 
+list_price BETWEEN 500 AND 1500
+AND (model_year='2019' OR model_year='2020');
+
+
+
+
+
+
